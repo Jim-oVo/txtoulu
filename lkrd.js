@@ -1,12 +1,12 @@
 /*
-666            cron 22 8,12 * * *  lkrd.js
+乐看热点            cron 22 8,12 * * *  lkrd.js
 
-export lkrd=" token @ token "  
+export lkrd="device#Authorization"  
 
 
 多账号用 换行 或 @ 分割  
 */
-const $ = Env('lkrd')
+const $ = Env('乐看热点')
 const { MD5 } = require('crypto-js')
 const notify = require('./sendNotify')
 
