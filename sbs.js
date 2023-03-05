@@ -6,8 +6,7 @@ cron 10 8 * * *  sbs
 
 ========= 青龙--配置文件--贴心复制区域  ========= 
 # 刷步数
-export sbsck
-=' x-session-id & x-request-id ' 
+export sbsck='账号&密码'  
 
 
 多账号用 换行 或 @ 分割
