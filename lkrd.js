@@ -1,5 +1,5 @@
 /*
-乐看热点            cron 22 8,12 * * *  lkrd.js
+乐看热点            cron 22 8,12 * * *  乐看热点
 
 export lkrd="device#Authorization"  
 
