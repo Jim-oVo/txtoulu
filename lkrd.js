@@ -7,7 +7,7 @@ export lkrd="device#Authorization"
 
 多账号用 换行 或 @ 分割  
 */
-const $ = Env('乐看热点')
+const $ = new Env('乐看热点')
 const { MD5 } = require('crypto-js')
 const notify = require('./sendNotify')
 
