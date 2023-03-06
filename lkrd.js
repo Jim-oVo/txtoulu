@@ -2,8 +2,9 @@
 乐看热点            
 cron 22 8 * * *  lkrd.js
 
-export lkrd="device#Authorization"  
+export lkrd=" device # Authorization "  
 
+抓包域名 apilkrd.cengaw.cn
 
 多账号用 换行 或 @ 分割  
 */
