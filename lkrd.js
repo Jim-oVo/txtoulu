@@ -1,6 +1,6 @@
 /*
 乐看热点            
-cron 22 8,12 * * *  lkrd.js
+cron 22 8 * * *  lkrd.js
 
 export lkrd="device#Authorization"  
 
