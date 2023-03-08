@@ -1,13 +1,14 @@
 /*
-乐看热点            
+悦看点            
 cron 22 8,12 * * *  ykd.js
 
 export ykd="device#Authorization#"  
 
+抓包域名  yuekandian.yichengw.cn
 
 多账号用 换行 或 @ 分割  
 */
-const $ = new Env('乐看热点')
+const $ = new Env('悦看点')
 const { MD5 } = require('crypto-js')
 const notify = require('./sendNotify')
 
