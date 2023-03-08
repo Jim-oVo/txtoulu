@@ -1,10 +1,9 @@
 /*
 乐看热点            
-cron 22 8 * * *  lkrd.js
+cron 22 8,12 * * *  lkrd.js
 
-export lkrd=" device # Authorization "  
+export lkrd="device#Authorization"  
 
-抓包域名 apilkrd.cengaw.cn
 
 多账号用 换行 或 @ 分割  
 */
@@ -292,149 +291,160 @@ function getRandom(min ,max){
      if (resp.code == 0) {
 
 
-    $.log(`${this.idx}: 获得:${resp.result.items[0].st}`)
-
-    $.log('签到', { sp: true, console: false })  
-    if (resp.result.items[0].st = 1) {
-        await this.qd()
-    } else if (resp.result.items[0].st = 0) {
-        $.log(`${this.idx}: 状态:${resp.result.items[0].text}`)  
-    }
-await wait(3)
-
-    $.log('看视频', { sp: true, console: false })  
-    if (resp.result.items[1].st = 1) {
-         for (let i = 0; i < 10; i++) {
-            
-            await this.kspqz()
-            await this.kspqz1()
-            
-            await this.ksptj()
-            await run()
-            await this.ksp()
-            await run()
-            await wait(60)
+        $.log('签到', { sp: true, console: false })  
+        if (resp.result.items[0].st = 1) {
+            await this.qd()
+        } else if (resp.result.items[0].st = 0) {
+            $.log(`${this.idx}: 状态:${resp.result.items[0].text}`)  
         }
-
-    } else if (resp.result.items[1].st = 0) {
-        $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
-    } else if (resp.result.items[1].st = 2) {
-        $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
-    }
-
-await wait(3)
-
-    $.log('看资讯，赚金币', { sp: true, console: false })  
-    if (resp.result.items[2].st = 1) {
-        for (let i = 0; i < 50; i++) {
-            
-            await run3()
-            await this.zqqz()
-            await wait(17)
-            await this.zq()
-            await run3()
-            await this.zqmq()                        
-        } 
-
-    } else if (resp.result.items[2].st = 1) {
-        $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
-        await this.zqlq()                        
-    } else if (resp.result.items[1].st = 0) {
-        $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
-    }
-await wait(3)
-
-    $.log('刷视频，赚金币', { sp: true, console: false })  
-    if (resp.result.items[3].st = 1) {
-        for (let i = 0; i < 50; i++) {
-            
-            await run3()
-            await this.sspqz()
-            await wait(17)
-            await this.ssp()
-            await run3()
-            await this.sspmq()                        
-        } 
-
-    } else if (resp.result.items[3].st = 0) {
-        $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
-    } else if (resp.result.items[1].st = 2) {
-        $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
-    }
-await wait(3)
-
-    $.log('当天阅读10篇文章', { sp: true, console: false })  
-    if (resp.result.items[5].st = 1) {
-        for (let i = 0; i < 10; i++) {
-            
-        await run1()
-        await this.ydwz()
-        } 
-        
-    } else if (resp.result.items[5].st = 0) {
-        $.log(`${this.idx}: 状态1:${resp.result.items[5].text}`)  
-    } else if (resp.result.items[1].st = 2) {
-        $.log(`${this.idx}: 状态2:${resp.result.items[5].text}`)  
-    }
-await wait(3)
-/*
-    $.log('当天完成4个看看赚任务', { sp: true, console: false })  
-    if (resp.result.items[6].st = 1) {
-           /*
-            await this.kkzqz1()
-            await wait(63)
-            await this.kkz1()
-            await this.kkzqz2()
-            await wait(61)
-            await this.kkz2()
-            
-            await this.kkzqz3()
-            await wait(65)
-            await this.kkz3()
-            await this.kkzqz4()
-            await wait(67)
-            await this.kkz4()
-
-
-            //await this.sspmq()                        
-    } else if (resp.result.items[6].st = 1) {
-        $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
-    } else if (resp.result.items[1].st = 2) {
-        $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
-    }
-await wait(3)
-
-    $.log('当天抽奖5次以上', { sp: true, console: false })  
-    if (resp.result.items[7].st = 1) {
-        let i = ''
-        for (let i = 0; i < 5; i++) {
-        await this.cj1()
-        await wait(16)
-     }
+    await wait(3)
     
-    } else if (resp.result.items[7].st = 0) {
-        $.log(`${this.idx}: 状态:${resp.result.items[7].text}`)  
-    } else if (resp.result.items[7].st = 2) {
-        $.log(`${this.idx}: 状态1:${resp.result.items[7].text}`)  
+        $.log('看视频', { sp: true, console: false })  
+        if (resp.result.items[1].text == '看视频') {
+             for (let i = 0; i < 10; i++) {
+                
+                await this.kspqz()
+                await this.kspqz1()
+                
+                await this.ksptj()
+                await run()
+                await this.ksp()
+                await run()
+                await wait(60)
+            }
+    
+        } else if (resp.result.items[1].text == "点击领取") {
+            $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
+        } else if (resp.result.items[1].text = 2) {
+            $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
+        }
+    
+    await wait(3)
+    
+        $.log('看资讯，赚金币', { sp: true, console: false })  
+        if (resp.result.items[2].text == "去完成") {
+            for (let i = 0; i < 50; i++) {
+                
+                await run3()
+                await this.zqqz()
+                await wait(17)
+                await this.zq()
+                await run3()
+                await this.zqmq()                        
+            } 
+    
+        } else if (resp.result.items[2].text == "点击领取") {
+            $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
+            await this.kzxqz1()
+            await wait(2)
+            await this.kzxqz2()
+            await this.kzxtj()
+            await run1() 
+            await this.kzx()
+                                   
+        } else if (resp.result.items[1].text = 0) {
+            $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
+        }
+    await wait(3)
+    
+        $.log('刷视频，赚金币', { sp: true, console: false })  
+        if (resp.result.items[3].text == "去完成") {
+            for (let i = 0; i < 50; i++) {
+                
+                await run3()
+                await this.sspqz()
+                await wait(17)
+                await this.ssp()
+                await run3()
+                await this.sspmq()                        
+            } 
+    
+        } else if (resp.result.items[3].text = "点击领取") {
+    
+            $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
+            await this.ssprw1()
+            await wait(2)
+            await this.ssprw2()
+            await this.ssprwtj()
+            await run1() 
+            await this.ssprw()
+        } else if (resp.result.items[1].text = 2) {
+            $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
+        }
+    await wait(3)
+    
+        $.log('当天阅读10篇文章', { sp: true, console: false })  
+        if (resp.result.items[5].text = "去完成") {
+            for (let i = 0; i < 10; i++) {
+                
+            await run1()
+            await this.ydwz()
+            } 
+            
+        } else if (resp.result.items[5].text = "点击领取") {
+            $.log(`${this.idx}: 状态1:${resp.result.items[5].text}`)  
+        } else if (resp.result.items[1].text = 2) {
+            $.log(`${this.idx}: 状态2:${resp.result.items[5].text}`)  
+        }
+    await wait(3)
+    /*
+        $.log('当天完成4个看看赚任务', { sp: true, console: false })  
+        if (resp.result.items[6].text = "去完成") {
+               /*
+                await this.kkzqz1()
+                await wait(63)
+                await this.kkz1()
+                await this.kkzqz2()
+                await wait(61)
+                await this.kkz2()
+                
+                await this.kkzqz3()
+                await wait(65)
+                await this.kkz3()
+                await this.kkzqz4()
+                await wait(67)
+                await this.kkz4()
+    
+    
+                //await this.sspmq()                        
+        } else if (resp.result.items[6].text = "点击领取") {
+            $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
+        } else if (resp.result.items[1].text = 2) {
+            $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
+        }
+    await wait(3)
+    
+        $.log('当天抽奖5次以上', { sp: true, console: false })  
+        if (resp.result.items[7].text = "看视频") {
+            let i = ''
+            for (let i = 0; i < 5; i++) {
+            await this.cj1()
+            await wait(16)
+         }
+        
+        } else if (resp.result.items[7].text = "点击领取") {
+            $.log(`${this.idx}: 状态:${resp.result.items[7].text}`)  
+        } else if (resp.result.items[7].text = 2) {
+            $.log(`${this.idx}: 状态1:${resp.result.items[7].text}`)  
+        }
+    */
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        } else if (resp.code != 0) {
+            console.log(resp.message)
+            this.ckFlog = false
+        }  
+    
     }
-*/
-
-
-
-
-
-
-
-
-
-
-    } else if (resp.code != 0) {
-        console.log(resp.message)
-        this.ckFlog = false
-    }  
-
-}
-
+    
 
     async qd() {
         let options = {
@@ -564,7 +574,7 @@ async xf2() {
     let options = {
         fn: 'xf2',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/coin`,
+        url: `${this.hostname}/api/v2/reward/bubble2`,
         headers: this.xf_headers,
         body: "id=2"
     }
@@ -585,7 +595,7 @@ async xf3() {
     let options = {
         fn: 'xf3',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/coin`,
+        url: `${this.hostname}/api/v2/reward/bubble2`,
         headers: this.xf_headers,
         body: "id=3"
     }
@@ -606,7 +616,7 @@ async xf4() {
     let options = {
         fn: 'xf4',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/coin`,
+        url: `${this.hostname}/api/v2/reward/bubble2`,
         headers: this.xf_headers,
         body: "id=4"
     }
@@ -1183,6 +1193,266 @@ async ydwz() {
     this.ckFlog = false
 }  
 }
+
+async ydwzlq1() {
+    let options = {
+        fn: 'ydwzlq1',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.wu_headers,
+        //body: `tickit=${this.tkk}`
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+   this.wz = resp.
+    console.log(`正在阅读第${resp.result.count}文章`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+async ydwzlq2() {
+    let options = {
+        fn: 'ydwzlq2',
+        method: 'GET',
+        url: `${this.hostname}/api/v2/news/sdk/zhuan/count?isfirstopen=0`,
+        headers: this.wu_headers,
+        //body: `tickit=${this.tkk}`
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+   
+    console.log(`正在阅读第${resp.result.count}文章`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+
+
+
+
+
+
+async kzxqz1() {
+    let options = {
+        fn: 'kzxqz1',
+        method: 'post',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.xf_headers,
+        body:'id=8'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx1 = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+async kzxqz2() {
+    let options = {
+        fn: 'kzxqz2',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/load?class=10000&&channel=2&type=1`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx = resp.result.tid
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+
+
+async kzxtj() {
+    let options = {
+        fn: 'kzxtj',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/showed?class=10000&channel=2&type=1&ecpm=19600.0&tid=${this.zx}&platformname=3`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:ok`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+async kzx() {
+    let i = ''
+    let options = {
+        fn: 'kzx',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/completed?class=10000&type=1&ticket=${this.zx1}&ecpm=19600.0&tid=${this.zx}&platformname=3`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+
+
+
+async ssprw1() {
+    let options = {
+        fn: 'ssprw1',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.xf_headers,
+        body:'id=7'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.sp = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+async ssprw2() {
+    let options = {
+        fn: 'ssprw2',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/load?class=10000&&channel=2&type=1`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.sp1 = resp.result.tid
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+
+
+async ssprwtj() {
+    let options = {
+        fn: 'ssprwtj',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/showed?class=10000&channel=2&type=1&ecpm=2000.0&tid=${this.sp1}&platformname=6`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:ok`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+async ssprw() {
+    let i = ''
+    let options = {
+        fn: 'ssprw',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/completed?class=10000&type=1&ticket=${this.sp}&ecpm=2000.0&tid=${this.sp1}&platformname=6`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+getSign(ts, reqNonc) {
+        let salt = '17aaf8118ffb270b766c6d6774317a133.8.0'
+        let sign = MD5(`signature${reqNonc}${ts}${salt}`).toString()
+        return sign
+    }
+
+
+    getText() {
+        let textarr = ['最简单的提高观赏性的办法就是把地球故事的部分剪辑掉半小时， emo的部分剪辑掉半小时。这样剩下的90分钟我们就看看外星人，看看月球，看看灾难片大场面就不错。', '顶着叛国罪的风险无比坚信前妻，这种还会离婚？', '你以为它是灾难片，其实它是科幻片；你以为它是科幻片，其实它是恐怖片；你以为它是恐怖片，其实它是科教片', '我的天，剧情真的好阴谋论，但是还算是能自圆其说', '大杂烩啊……我能理解这电影为什么在海外卖的不好了，因为核心创意真的已经太老套了', '一开始我以为这就是外国人看《流浪地球》时的感受啊，后来发现这不是我当初看《胜利号》的感受么']
+        let ranNum = $.randomInt(1, textarr.length)
+        let text = textarr[ranNum]
+        return text
+    }
+    getCommentText() {
+        let add_comment_text_arr = ['感谢推荐的电影呢', '有时间一定看看这个电影怎么样', '晚上就去看', '66666666666', '这部电影我看过，非常好看']
+        let ranNum = $.randomInt(1, add_comment_text_arr.length)
+        let text = add_comment_text_arr[ranNum]
+        return text
+    }
+
+
+
+
 
 
 
