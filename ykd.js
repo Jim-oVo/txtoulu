@@ -2,7 +2,7 @@
 悦看点            
 cron 22 8,12 * * *  ykd.js
 
-export ykd="device#Authorization#"  
+export ykd="device # Authorization # androidid"  
 
 抓包域名  yuekandian.yichengw.cn
 
