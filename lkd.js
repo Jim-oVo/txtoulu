@@ -24,16 +24,16 @@ let DEFAULT_RETRY = 2           // 默认重试次数
 
 async function userTasks() {
 
- 
+
     $.log('签到', { sp: true, console: false })  // 带分割的打印
-    litext = []
+    list = []
     for (let user of $.userList) {
-        list.push(user.list())
+        list.push(user.lists())
     } await Promise.all(list)
 
 
     $.log('悬浮', { sp: true, console: false })  // 带分割的打印
-    litext = []
+    list = []
     for (let user of $.userList) {
         list.push(user.xfxh())
     } await Promise.all(list)
@@ -41,26 +41,26 @@ async function userTasks() {
 
 
 $.log('红包雨', { sp: true, console: false })  // 带分割的打印
-    litext = []
+    list = []
     for (let user of $.userList) {
         list.push(user.hby())
     } await Promise.all(list)
 
 
 
-/*
+/* 
     $.log('转圈满', { sp: true, console: false })  // 带分割的打印
-    litext = []
+    list = []
     for (let user of $.userList) {
         list.push(user.zqmq())
     } await Promise.all(list)
 
     $.log('cj', { sp: true, console: false })  // 带分割的打印
-    litext = []
+    list = []
     for (let user of $.userList) {
         list.push(user.cjqz())
         await wait(10)
-        list.push(user.cjcs())
+        list.push(user.cj1())
     } await Promise.all(list)
 */
 
@@ -75,60 +75,6 @@ $.log('红包雨', { sp: true, console: false })  // 带分割的打印
 
 
 
-function sleep(time) {
-    return new Promise((resolve)=>setTimeout(resolve, time));
-}
- 
-async function run() {
-    let i = 1;
-    let iMax=64516;
-    let iMin=65485;
-    while (i <= 1) {
-        let sleepTime = Math.floor(Math.random() * iMax) + iMin;
-        await sleep(sleepTime);        
-        let time = new Date()
-        //console.log('本次Sleep: ' + sleepTime + ' ms 时间:'+time.toLocaleString());        
-        i++;
-    };
- 
-};
- 
-run();
-
-async function run1() {
-    let i = 1;
-    let iMax=36548;
-    let iMin=23451;
-    while (i <= 1) {
-        let sleepTime = Math.floor(Math.random() * iMax) + iMin;
-        await sleep(sleepTime);        
-        let time = new Date()
-        //console.log('本次Sleep: ' + sleepTime + ' ms 时间:'+time.toLocaleString());        
-        i++;
-    };
- 
-};
- 
-run1();
- 
-
-async function run3() {
-    let i = 1;
-    let iMax=3542;
-    let iMin=1254;
-    while (i <= 1) {
-        let sleepTime = Math.floor(Math.random() * iMax) + iMin;
-        await sleep(sleepTime);        
-        let time = new Date()
-        //console.log('本次Sleep: ' + sleepTime + ' ms 时间:'+time.toLocaleString());        
-        i++;
-    };
- 
-};
- 
-run3();
-
-//await async 用于控制 setTimeout 同步执行。模拟JS随机点击
 
 
 
@@ -141,7 +87,7 @@ class UserClass {
 		this.dh = this.xr[1]
         this.ts = $.ts(13)
         this.reqNonc = $.randomInt(100000, 999999)
-		this.hotext = "lkd.yichengwangluo.net"
+		this.host = "lkd.yichengwangluo.net"
 		this.hostname = "https://" + this.host
         this.sj = getRandom(3000,15000)
 
@@ -151,8 +97,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -165,8 +111,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -179,8 +125,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -192,8 +138,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -206,8 +152,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -220,8 +166,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -233,8 +179,8 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -247,22 +193,22 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
-            "Content-Length": "324"
+            "Content-Length": "326"
         };
         this.kkz_headers = {
 			"Host": this.host,
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "juliang",
-            "version": "101",
+            "store": "toutiao",
+            "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -271,24 +217,21 @@ class UserClass {
             "Content-Length": "333"
         };
 
-function getRandom(min ,max){
-        return Math.floor(Math.random()*(max -min) +min);
-}
 
 
     }
 
 
-    async list() {
+    async lists() {
         let options = {
-            fn: 'list',
+            fn: 'lists',
             method: 'POST',
             url: `${this.hostname}/api/v2/zhuan/index`,
             headers: this.qd_headers,
         }
-        // console.log(options)
+     //    console.log(options)
         let resp = await $.request(options)
-        // console.log(resp)
+     //    console.log(resp)
      if (resp.code == 0) {
 
 
@@ -303,7 +246,7 @@ function getRandom(min ,max){
 await wait(3)
 
     $.log('看视频', { sp: true, console: false })  
-    if (resp.result.items[1].text = "看视频") {
+    if (resp.result.items[1].text == '看视频') {
          for (let i = 0; i < 10; i++) {
             
             await this.kspqz()
@@ -316,7 +259,7 @@ await wait(3)
             await wait(60)
         }
 
-    } else if (resp.result.items[1].text = 1) {
+    } else if (resp.result.items[1].text == "点击领取") {
         $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
     } else if (resp.result.items[1].text = 2) {
         $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
@@ -325,7 +268,7 @@ await wait(3)
 await wait(3)
 
     $.log('看资讯，赚金币', { sp: true, console: false })  
-    if (resp.result.items[2].text = "去完成") {
+    if (resp.result.items[2].text == "去完成") {
         for (let i = 0; i < 50; i++) {
             
             await run3()
@@ -336,16 +279,22 @@ await wait(3)
             await this.zqmq()                        
         } 
 
-    } else if (resp.result.items[2].text = "点击领取") {
+    } else if (resp.result.items[2].text == "点击领取") {
         $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
-        await this.zqlq()                        
+        await this.kzxqz1()
+        await wait(2)
+        await this.kzxqz2()
+        await this.kzxtj()
+        await run1() 
+        await this.kzx()
+                               
     } else if (resp.result.items[1].text = 0) {
         $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
     }
 await wait(3)
 
     $.log('刷视频，赚金币', { sp: true, console: false })  
-    if (resp.result.items[3].text = "去完成") {
+    if (resp.result.items[3].text == "去完成") {
         for (let i = 0; i < 50; i++) {
             
             await run3()
@@ -357,7 +306,14 @@ await wait(3)
         } 
 
     } else if (resp.result.items[3].text = "点击领取") {
+
         $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
+        await this.ssprw1()
+        await wait(2)
+        await this.ssprw2()
+        await this.ssprwtj()
+        await run1() 
+        await this.ssprw()
     } else if (resp.result.items[1].text = 2) {
         $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
     }
@@ -546,7 +502,7 @@ async qdfb2() {
             fn: 'xf1',
             method: 'POST',
             url: `${this.hostname}/api/v2/reward/bubble2`,
-            headers: this.hby_headers,
+            headers: this.qd_headers,
         }
         // console.log(options)
         let resp = await $.request(options)
@@ -564,8 +520,8 @@ async xf2() {
     let options = {
         fn: 'xf2',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/coin`,
-        headers: this.xf_headers,
+        url: `${this.hostname}/api/v2/reward/bubble2`,
+        headers: this.qd_headers,
         body: "id=2"
     }
     // console.log(options)
@@ -585,8 +541,8 @@ async xf3() {
     let options = {
         fn: 'xf3',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/coin`,
-        headers: this.xf_headers,
+        url: `${this.hostname}/api/v2/reward/bubble2`,
+        headers: this.qd_headers,
         body: "id=3"
     }
     // console.log(options)
@@ -606,8 +562,8 @@ async xf4() {
     let options = {
         fn: 'xf4',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/coin`,
-        headers: this.xf_headers,
+        url: `${this.hostname}/api/v2/reward/bubble2`,
+        headers: this.qd_headers,
         body: "id=4"
     }
     // console.log(options)
@@ -723,22 +679,6 @@ async ksptj() {
 }
 
 
-async csksp() {
-let i = 0
-    if (i >= 0) {
-        for (let i = 0; i < 10; i++) {
-            await run()
-            await this.kspqz()
-            await this.kspqz1()
-            await run()
-            await this.ksptj()
-            await run()
-            await this.ksp()
-            
-        }
-    }
-
-}
 
 
 async ksp() {
@@ -770,8 +710,8 @@ async zq() {
             "accept": 'application/json',
             "device": this.dh,
             "oaid": '',
-            "store": 'juliang',
-            "version": '101',
+            "store": 'toutiao',
+            "version": '3',
             "platform": '1',
             "Authorization": this.xs,
             "User-Agent": 'Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)',
@@ -897,7 +837,7 @@ async cj1() {
         method: 'POST',
         url: `${this.hostname}/api/v2/reward/lottery/index`,
         headers: this.cj_headers,
-        body: `ticket=eyJ0eXAiOiJKV1MiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2Nzc2NTE1MDcsImlhdCI6MTY3NzY0NzkwNywibmJmIjoxNjc3NjQ3OTA3LCJzdWIiOiJsb3R0ZXJ5IiwiYXVkIjo5OTg0Nn0.MTM2NTdmYTZiN2FiZGJhYmNmNDc1ZTQ1Yjk5NTU0NGYwNDNmNmVkM2I5OWUyOGFmZTkzNWE2N2Q1NjVhOWU0ZGQxODQ3ZWYzMjQzNzI2NmFjZmFjMWE3MDgwYWQyMjdmNWZhMTk1YTQzYWUyMzQ5Mjg0ZDlhZDQ0OGZkYzc2OGY`
+        body: `ticket=${this.tk5}`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1184,6 +1124,235 @@ async ydwz() {
 }  
 }
 
+async ydwzlq1() {
+    let options = {
+        fn: 'ydwzlq1',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.wu_headers,
+        //body: `tickit=${this.tkk}`
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+   this.wz = resp.
+    console.log(`正在阅读第${resp.result.count}文章`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+async ydwzlq2() {
+    let options = {
+        fn: 'ydwzlq2',
+        method: 'GET',
+        url: `${this.hostname}/api/v2/news/sdk/zhuan/count?isfirstopen=0`,
+        headers: this.wu_headers,
+        //body: `tickit=${this.tkk}`
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+   
+    console.log(`正在阅读第${resp.result.count}文章`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+
+
+
+
+
+
+async kzxqz1() {
+    let options = {
+        fn: 'kzxqz1',
+        method: 'post',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.xf_headers,
+        body:'id=8'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx1 = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+async kzxqz2() {
+    let options = {
+        fn: 'kzxqz2',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/load?class=10000&&channel=2&type=1`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx = resp.result.tid
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+
+
+async kzxtj() {
+    let options = {
+        fn: 'kzxtj',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/showed?class=10000&channel=2&type=1&ecpm=19600.0&tid=${this.zx}&platformname=3`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:ok`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+async kzx() {
+    let i = ''
+    let options = {
+        fn: 'kzx',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/completed?class=10000&type=1&ticket=${this.zx1}&ecpm=19600.0&tid=${this.zx}&platformname=3`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+
+
+
+async ssprw1() {
+    let options = {
+        fn: 'ssprw1',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.xf_headers,
+        body:'id=7'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.sp = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+async ssprw2() {
+    let options = {
+        fn: 'ssprw2',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/load?class=10000&&channel=2&type=1`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.sp1 = resp.result.tid
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+
+
+async ssprwtj() {
+    let options = {
+        fn: 'ssprwtj',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/showed?class=10000&channel=2&type=1&ecpm=2000.0&tid=${this.sp1}&platformname=6`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:ok`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+
+}
+
+
+
+
+async ssprw() {
+    let i = ''
+    let options = {
+        fn: 'ssprw',
+        method: 'get',
+        url: `${this.hostname}/api/v2/ads/action/completed?class=10000&type=1&ticket=${this.sp}&ecpm=2000.0&tid=${this.sp1}&platformname=6`,
+        headers: this.wu_headers,
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    console.log(resp)
+    this.ckFlog = false
+}  
+}
+
+
+
+
+
 
 
 
@@ -1276,10 +1445,9 @@ getSign(ts, reqNonc) {
 
 
 
-
-
-
-
+    function getRandom(min ,max){
+        return Math.floor(Math.random()*(max -min) +min);
+}
 
 
 function MD5Encrypt(a) { function b(a, b) { return a << b | a >>> 32 - b } function c(a, b) { var c, d, e, f, g; return e = 2147483648 & a, f = 2147483648 & b, c = 1073741824 & a, d = 1073741824 & b, g = (1073741823 & a) + (1073741823 & b), c & d ? 2147483648 ^ g ^ e ^ f : c | d ? 1073741824 & g ? 3221225472 ^ g ^ e ^ f : 1073741824 ^ g ^ e ^ f : g ^ e ^ f } function d(a, b, c) { return a & b | ~a & c } function e(a, b, c) { return a & c | b & ~c } function f(a, b, c) { return a ^ b ^ c } function g(a, b, c) { return b ^ (a | ~c) } function h(a, e, f, g, h, i, j) { return a = c(a, c(c(d(e, f, g), h), j)), c(b(a, i), e) } function i(a, d, f, g, h, i, j) { return a = c(a, c(c(e(d, f, g), h), j)), c(b(a, i), d) } function j(a, d, e, g, h, i, j) { return a = c(a, c(c(f(d, e, g), h), j)), c(b(a, i), d) } function k(a, d, e, f, h, i, j) { return a = c(a, c(c(g(d, e, f), h), j)), c(b(a, i), d) } function l(a) { for (var b, c = a.length, d = c + 8, e = (d - d % 64) / 64, f = 16 * (e + 1), g = new Array(f - 1), h = 0, i = 0; c > i;)b = (i - i % 4) / 4, h = i % 4 * 8, g[b] = g[b] | a.charCodeAt(i) << h, i++; return b = (i - i % 4) / 4, h = i % 4 * 8, g[b] = g[b] | 128 << h, g[f - 2] = c << 3, g[f - 1] = c >>> 29, g } function m(a) { var b, c, d = "", e = ""; for (c = 0; 3 >= c; c++)b = a >>> 8 * c & 255, e = "0" + b.toString(16), d += e.substr(e.length - 2, 2); return d } function n(a) { a = a.replace(/\r\n/g, "\n"); for (var b = "", c = 0; c < a.length; c++) { var d = a.charCodeAt(c); 128 > d ? b += String.fromCharCode(d) : d > 127 && 2048 > d ? (b += String.fromCharCode(d >> 6 | 192), b += String.fromCharCode(63 & d | 128)) : (b += String.fromCharCode(d >> 12 | 224), b += String.fromCharCode(d >> 6 & 63 | 128), b += String.fromCharCode(63 & d | 128)) } return b } var o, p, q, r, s, t, u, v, w, x = [], y = 7, z = 12, A = 17, B = 22, C = 5, D = 9, E = 14, F = 20, G = 4, H = 11, I = 16, J = 23, K = 6, L = 10, M = 15, N = 21; for (a = n(a), x = l(a), t = 1732584193, u = 4023233417, v = 2562383102, w = 271733878, o = 0; o < x.length; o += 16)p = t, q = u, r = v, s = w, t = h(t, u, v, w, x[o + 0], y, 3614090360), w = h(w, t, u, v, x[o + 1], z, 3905402710), v = h(v, w, t, u, x[o + 2], A, 606105819), u = h(u, v, w, t, x[o + 3], B, 3250441966), t = h(t, u, v, w, x[o + 4], y, 4118548399), w = h(w, t, u, v, x[o + 5], z, 1200080426), v = h(v, w, t, u, x[o + 6], A, 2821735955), u = h(u, v, w, t, x[o + 7], B, 4249261313), t = h(t, u, v, w, x[o + 8], y, 1770035416), w = h(w, t, u, v, x[o + 9], z, 2336552879), v = h(v, w, t, u, x[o + 10], A, 4294925233), u = h(u, v, w, t, x[o + 11], B, 2304563134), t = h(t, u, v, w, x[o + 12], y, 1804603682), w = h(w, t, u, v, x[o + 13], z, 4254626195), v = h(v, w, t, u, x[o + 14], A, 2792965006), u = h(u, v, w, t, x[o + 15], B, 1236535329), t = i(t, u, v, w, x[o + 1], C, 4129170786), w = i(w, t, u, v, x[o + 6], D, 3225465664), v = i(v, w, t, u, x[o + 11], E, 643717713), u = i(u, v, w, t, x[o + 0], F, 3921069994), t = i(t, u, v, w, x[o + 5], C, 3593408605), w = i(w, t, u, v, x[o + 10], D, 38016083), v = i(v, w, t, u, x[o + 15], E, 3634488961), u = i(u, v, w, t, x[o + 4], F, 3889429448), t = i(t, u, v, w, x[o + 9], C, 568446438), w = i(w, t, u, v, x[o + 14], D, 3275163606), v = i(v, w, t, u, x[o + 3], E, 4107603335), u = i(u, v, w, t, x[o + 8], F, 1163531501), t = i(t, u, v, w, x[o + 13], C, 2850285829), w = i(w, t, u, v, x[o + 2], D, 4243563512), v = i(v, w, t, u, x[o + 7], E, 1735328473), u = i(u, v, w, t, x[o + 12], F, 2368359562), t = j(t, u, v, w, x[o + 5], G, 4294588738), w = j(w, t, u, v, x[o + 8], H, 2272392833), v = j(v, w, t, u, x[o + 11], I, 1839030562), u = j(u, v, w, t, x[o + 14], J, 4259657740), t = j(t, u, v, w, x[o + 1], G, 2763975236), w = j(w, t, u, v, x[o + 4], H, 1272893353), v = j(v, w, t, u, x[o + 7], I, 4139469664), u = j(u, v, w, t, x[o + 10], J, 3200236656), t = j(t, u, v, w, x[o + 13], G, 681279174), w = j(w, t, u, v, x[o + 0], H, 3936430074), v = j(v, w, t, u, x[o + 3], I, 3572445317), u = j(u, v, w, t, x[o + 6], J, 76029189), t = j(t, u, v, w, x[o + 9], G, 3654602809), w = j(w, t, u, v, x[o + 12], H, 3873151461), v = j(v, w, t, u, x[o + 15], I, 530742520), u = j(u, v, w, t, x[o + 2], J, 3299628645), t = k(t, u, v, w, x[o + 0], K, 4096336452), w = k(w, t, u, v, x[o + 7], L, 1126891415), v = k(v, w, t, u, x[o + 14], M, 2878612391), u = k(u, v, w, t, x[o + 5], N, 4237533241), t = k(t, u, v, w, x[o + 12], K, 1700485571), w = k(w, t, u, v, x[o + 3], L, 2399980690), v = k(v, w, t, u, x[o + 10], M, 4293915773), u = k(u, v, w, t, x[o + 1], N, 2240044497), t = k(t, u, v, w, x[o + 8], K, 1873313359), w = k(w, t, u, v, x[o + 15], L, 4264355552), v = k(v, w, t, u, x[o + 6], M, 2734768916), u = k(u, v, w, t, x[o + 13], N, 1309151649), t = k(t, u, v, w, x[o + 4], K, 4149444226), w = k(w, t, u, v, x[o + 11], L, 3174756917), v = k(v, w, t, u, x[o + 2], M, 718787259), u = k(u, v, w, t, x[o + 9], N, 3951481745), t = c(t, p), u = c(u, q), v = c(v, r), w = c(w, s); var O = m(t) + m(u) + m(v) + m(w); return O.toLowerCase() }
@@ -1298,7 +1466,7 @@ function Env(name) {
 
 
             this.userIdx = 0
-            this.userLitext = []
+            this.userList = []
             this.userCount = 0
         }
         async request(opt) {
@@ -1357,7 +1525,7 @@ function Env(name) {
             }
         }
         read_env(Class) {
-            let envStrLitext = ckNames.map(x => process.env[x])
+            let envStrList = ckNames.map(x => process.env[x])
             for (let env_str of envStrList.filter(x => !!x)) {
                 let sp = envSplitor.filter(x => env_str.includes(x))
                 let splitor = sp.length > 0 ? sp[0] : envSplitor[0]
@@ -1559,3 +1727,59 @@ function Env(name) {
         }
     }(name)
 }
+
+
+function sleep(time) {
+    return new Promise((resolve)=>setTimeout(resolve, time));
+}
+ 
+async function run() {
+    let i = 1;
+    let iMax=64516;
+    let iMin=65485;
+    while (i <= 1) {
+        let sleepTime = Math.floor(Math.random() * iMax) + iMin;
+        await sleep(sleepTime);        
+        let time = new Date()
+        //console.log('本次Sleep: ' + sleepTime + ' ms 时间:'+time.toLocaleString());        
+        i++;
+    };
+ 
+};
+ 
+run();
+
+async function run1() {
+    let i = 1;
+    let iMax=36548;
+    let iMin=23451;
+    while (i <= 1) {
+        let sleepTime = Math.floor(Math.random() * iMax) + iMin;
+        await sleep(sleepTime);        
+        let time = new Date()
+        //console.log('本次Sleep: ' + sleepTime + ' ms 时间:'+time.toLocaleString());        
+        i++;
+    };
+ 
+};
+ 
+run1();
+ 
+
+async function run3() {
+    let i = 1;
+    let iMax=3542;
+    let iMin=1254;
+    while (i <= 1) {
+        let sleepTime = Math.floor(Math.random() * iMax) + iMin;
+        await sleep(sleepTime);        
+        let time = new Date()
+        //console.log('本次Sleep: ' + sleepTime + ' ms 时间:'+time.toLocaleString());        
+        i++;
+    };
+ 
+};
+ 
+run3();
+
+//await async 用于控制 setTimeout 同步执行。模拟JS随机点击
