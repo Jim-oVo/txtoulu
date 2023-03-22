@@ -199,6 +199,7 @@ class UserClass {
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
+            'Content-Type':'application/x-www-form-urlencoded',
             "Accept-Encoding": "gzip",
             "Content-Length": "326"
         };
@@ -216,7 +217,35 @@ class UserClass {
             "Accept-Encoding": "gzip",
             "Content-Length": "333"
         };
-
+		this.ew_headers = {
+			"Host": this.host,
+            "accept": "application/json",
+            "device": this.dh,
+            "oaid": "",
+            "store": "toutiao",
+            "version": "3",
+            "platform": "1",
+            "Authorization": this.xs,
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            "Connection": "Keep-Alive",
+            "Accept-Encoding": "gzip",
+            'Content-Type':'application/x-www-form-urlencoded',
+            "Content-Length": "4"
+        };
+		this.ew1_headers = {
+			"Host": this.host,
+            "accept": "application/json",
+            "device": this.dh,
+            "oaid": "",
+            "store": "toutiao",
+            "version": "3",
+            "platform": "1",
+            "Authorization": this.xs,
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            "Connection": "Keep-Alive",
+            "Accept-Encoding": "gzip",
+            "Content-Length": "5"
+        };
 
 
     }
@@ -240,7 +269,7 @@ class UserClass {
     $.log('签到', { sp: true, console: false })  
     if (resp.result.items[0].st = 1) {
         await this.qd()
-    } else if (resp.result.items[0].st = 0) {
+    } else if (resp.result.items[0].st == 0) {
         $.log(`${this.idx}: 状态:${resp.result.items[0].text}`)  
     }
 await wait(3)
@@ -261,7 +290,7 @@ await wait(3)
 
     } else if (resp.result.items[1].text == "点击领取") {
         $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
-    } else if (resp.result.items[1].text = 2) {
+    } else if (resp.result.items[1].st == 2) {
         $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
     }
 
@@ -282,13 +311,14 @@ await wait(3)
     } else if (resp.result.items[2].text == "点击领取") {
         $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
         await this.kzxqz1()
+        /*
         await wait(2)
         await this.kzxqz2()
         await this.kzxtj()
         await run1() 
         await this.kzx()
-                               
-    } else if (resp.result.items[1].text = 0) {
+       */                        
+    } else if (resp.result.items[2].st == 2) {
         $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
     }
 await wait(3)
@@ -305,32 +335,35 @@ await wait(3)
             await this.sspmq()                        
         } 
 
-    } else if (resp.result.items[3].text = "点击领取") {
+    } else if (resp.result.items[3].text == "点击领取") {
 
         $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
         await this.ssprw1()
+        /*
         await wait(2)
         await this.ssprw2()
         await this.ssprwtj()
         await run1() 
         await this.ssprw()
-    } else if (resp.result.items[1].text = 2) {
+        */
+    } else if (resp.result.items[3].st == 2) {
         $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
     }
 await wait(3)
 
     $.log('当天阅读10篇文章', { sp: true, console: false })  
-    if (resp.result.items[5].text = "去完成") {
+    if (resp.result.items[4].text == "去完成") {
         for (let i = 0; i < 10; i++) {
             
         await run1()
         await this.ydwz()
         } 
         
-    } else if (resp.result.items[5].text = "点击领取") {
-        $.log(`${this.idx}: 状态1:${resp.result.items[5].text}`)  
-    } else if (resp.result.items[1].text = 2) {
-        $.log(`${this.idx}: 状态2:${resp.result.items[5].text}`)  
+    } else if (resp.result.items[4].text == "点击领取") {
+
+        await this.ydwzqz() 
+    } else if (resp.result.items[4].st == 2) {
+        $.log(`${this.idx}: 状态2:${resp.result.items[4].text}`)  
     }
 await wait(3)
 /*
@@ -359,21 +392,22 @@ await wait(3)
         $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
     }
 await wait(3)
-
+*/
     $.log('当天抽奖5次以上', { sp: true, console: false })  
-    if (resp.result.items[7].text = "看视频") {
-        let i = ''
+    if (resp.result.items[5].text == "去完成") {
+        
         for (let i = 0; i < 5; i++) {
-        await this.cj1()
+        await this.cjqz()
         await wait(16)
+        await this.cj1()
      }
     
-    } else if (resp.result.items[7].text = "点击领取") {
-        $.log(`${this.idx}: 状态:${resp.result.items[7].text}`)  
-    } else if (resp.result.items[7].text = 2) {
-        $.log(`${this.idx}: 状态1:${resp.result.items[7].text}`)  
+    } else if (resp.result.items[5].text == "点击领取") {
+        await this.cjlq()
+    } else if (resp.result.items[5].text == 2) {
+        $.log(`${this.idx}: 状态1:${resp.result.items[5].text}`)  
     }
-*/
+
 
 
 
@@ -396,8 +430,9 @@ await wait(3)
         let options = {
             fn: 'qd',
             method: 'POST',
-            url: `${this.hostname}/api/v2/reward/sign`,
+            url: `${this.hostname}/api/v2/coin/sign`,
             headers: this.qd_headers,
+            
         }
         // console.log(options)
         let resp = await $.request(options)
@@ -406,7 +441,7 @@ await wait(3)
          $.log(`${this.idx}: 获得:${resp.result.coin}\n状态:${resp.result.message}\n`)
          this.tk = resp.result.ticket
          await run()
-         await this.qdfb1()
+        // await this.qdfb1()
     } else if (resp.code != 0) {
         console.log(resp.message)
         this.ckFlog = false
@@ -467,7 +502,7 @@ async qdfb2() {
         let resp = await $.request(options)
         // console.log(resp)
      if (resp.code == 0) {
-         $.log(`${this.idx}:\n状态:${resp.result.reward}\n`)
+         $.log(`${this.idx}:\n状态:${resp.result.coin}\n`)
     } else if (resp.code != 0) {
         console.log(resp)
         this.ckFlog = false
@@ -480,7 +515,7 @@ async qdfb2() {
         let options = {
             fn: 'hby',
             method: 'POST',
-            url: `${this.hostname}/api/v2/reward/rain`,
+            url: `${this.hostname}/api/v2/coin/rain`,
             headers: this.hby_headers,
         }
         // console.log(options)
@@ -501,16 +536,16 @@ async qdfb2() {
         let options = {
             fn: 'xf1',
             method: 'POST',
-            url: `${this.hostname}/api/v2/reward/bubble2`,
+            url: `${this.hostname}/api/v2/reward/bubble`,
             headers: this.qd_headers,
         }
         // console.log(options)
         let resp = await $.request(options)
         // console.log(resp)
      if (resp.code == 0) {
-        $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
     await run()
-    await this.xffb()
+ //   await this.xffb()
     } else if (resp.code != 0) {
         $.log(`\n 状况:${resp.message}\n`)
         this.ckFlog = false
@@ -520,7 +555,7 @@ async xf2() {
     let options = {
         fn: 'xf2',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/bubble2`,
+        url: `${this.hostname}/api/v2/reward/bubble`,
         headers: this.qd_headers,
         body: "id=2"
     }
@@ -528,10 +563,10 @@ async xf2() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
     this.tk2 = resp.result.ticket
     await run()
-    await this.xffb()
+  //  await this.xffb()
 } else if (resp.code == 40301) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -541,7 +576,7 @@ async xf3() {
     let options = {
         fn: 'xf3',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/bubble2`,
+        url: `${this.hostname}/api/v2/reward/bubble`,
         headers: this.qd_headers,
         body: "id=3"
     }
@@ -549,10 +584,10 @@ async xf3() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
     this.tk2 = resp.result.ticket
     await run()
-    await this.xffb()
+  //  await this.xffb()
 } else if (resp.code == 40301) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -562,7 +597,7 @@ async xf4() {
     let options = {
         fn: 'xf4',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/bubble2`,
+        url: `${this.hostname}/api/v2/reward/bubble`,
         headers: this.qd_headers,
         body: "id=4"
     }
@@ -570,10 +605,10 @@ async xf4() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
     this.tk2 = resp.result.ticket
     await run()
-    await this.xffb()
+  //  await this.xffb()
 } else if (resp.code == 40301) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -693,7 +728,7 @@ async ksp() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -723,7 +758,7 @@ async zq() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}: 获得:${resp.result.reward}`)
+    $.log(`${this.idx}: 获得:${resp.result.coin}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -805,7 +840,7 @@ async zqmq() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}: 转一圈获得:${resp.result.reward}`)
+    $.log(`${this.idx}: 转一圈获得:${resp.result.coin}`)
 } else if (resp.code != 0) {
     //console.log(resp)
     this.ckFlog = false
@@ -865,19 +900,19 @@ async cjcs() {
 
 }
 
-async cj() {
+async cjlq() {
     let options = {
-        fn: 'cj',
+        fn: 'cjlq',
         method: 'POST',
-        url: `${this.hostname}/api/v2/reward/lottery/index`,
-        headers: this.cj_headers,
-        body: `ticket=${this.tk6}`
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.ew_headers,
+        body: `id=4`
     }
     // console.log(options)
     let resp = await $.request(options)
    //  console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}: 获得:${resp.result.num}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -915,7 +950,7 @@ async ssp() {
     // console.log(resp)
  if (resp.code == 0) {
    
-   console.log(`刷视频获得:${resp.result.reward}`)
+   console.log(`刷视频获得:${resp.result.coin}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -934,7 +969,7 @@ async sspmq() {
     // console.log(resp)
  if (resp.code == 0) {
    
-   console.log(`刷视频满圈获得:${resp.result.reward}`)
+   console.log(`刷视频满圈获得:${resp.result.coin}`)
 } else if (resp.code != 0) {
    //console.log(resp)
     this.ckFlog = false
@@ -1175,15 +1210,15 @@ async kzxqz1() {
         fn: 'kzxqz1',
         method: 'post',
         url: `${this.hostname}/api/v2/zhuan/done`,
-        headers: this.xf_headers,
+        headers: this.ew_headers,
         body:'id=8'
     }
-    // console.log(options)
+     console.log(options)
     let resp = await $.request(options)
-    // console.log(resp)
+     console.log(resp)
  if (resp.code == 0) {
     this.zx1 = resp.result.ticket
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -1251,7 +1286,7 @@ async kzx() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -1266,7 +1301,7 @@ async ssprw1() {
         fn: 'ssprw1',
         method: 'POST',
         url: `${this.hostname}/api/v2/zhuan/done`,
-        headers: this.xf_headers,
+        headers: this.ew_headers,
         body:'id=7'
     }
     // console.log(options)
@@ -1274,7 +1309,7 @@ async ssprw1() {
     // console.log(resp)
  if (resp.code == 0) {
     this.sp = resp.result.ticket
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -1342,14 +1377,32 @@ async ssprw() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
 }  
 }
 
+async ydwzqz() {
+    let options = {
+        fn: 'ydwzqz',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.ew1_headers,
+        body:'id=24'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
 
+}
 
 
 
