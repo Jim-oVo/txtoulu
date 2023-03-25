@@ -34,13 +34,13 @@ async function userTasks() {
         await wait(1)
         list.push(user.info())
     } await Promise.all(list)
-
+/*
      $.log('提现', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
         list.push(user.tx())
     } await Promise.all(list)
-
+*/
     $.log('开始任务', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
