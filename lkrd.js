@@ -2,6 +2,9 @@
 乐看热点            
 cron 22 8,12 * * *  lkrd.js
 
+下载地址：
+https://apilkrd.cengaw.cn/landing_page/110160
+
 抓包域名  apilkrd.cengaw.cn
 环境变量 lkrd
 export lkrd="device#Authorization"  
