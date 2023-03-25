@@ -2,6 +2,9 @@
 步数有赏            
 cron 22 8,12 * * *  bsys.js
 
+下载地址：
+https://bsys.yichengwangluo.net/landing_page/7706712
+
 抓包域名 bsys.yichengwangluo.net
 
 环境变量
