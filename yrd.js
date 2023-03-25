@@ -4,6 +4,8 @@ cron 22 8,12 * * *  yrd.js
 
 抓包域名 yrd.yichengwangluo.net
 
+悦热点-看资讯赚零钱 https://yrd.yichengwangluo.net/landing_page/7707605
+
 环境变量
 export yrd="Authorization#device"  
 
