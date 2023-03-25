@@ -23,15 +23,21 @@ let DEFAULT_RETRY = 2           // 默认重试次数
 
 
 async function userTasks() {
+     $.log('用户信息', { sp: true, console: false })  // 带分割的打印
+    list = []
+    for (let user of $.userList) {
+        await wait(1)
+        list.push(user.info())
+    } await Promise.all(list)
 
-
+await wait(1)
     $.log('签到', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
         list.push(user.lists())
     } await Promise.all(list)
 
-
+await wait(1)
     $.log('悬浮', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
@@ -39,7 +45,7 @@ async function userTasks() {
     } await Promise.all(list)
 
 
-
+await wait(1)
 $.log('红包雨', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
@@ -242,6 +248,7 @@ class UserClass {
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            'Content-Type':'application/x-www-form-urlencoded',
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
             "Content-Length": "5"
@@ -404,7 +411,7 @@ await wait(3)
     
     } else if (resp.result.items[5].text == "点击领取") {
         await this.cjlq()
-    } else if (resp.result.items[5].text == 2) {
+    } else if (resp.result.items[5].st == 2) {
         $.log(`${this.idx}: 状态1:${resp.result.items[5].text}`)  
     }
 
@@ -430,7 +437,7 @@ await wait(3)
         let options = {
             fn: 'qd',
             method: 'POST',
-            url: `${this.hostname}/api/v2/coin/sign`,
+            url: `${this.hostname}/api/v2/reward/sign`,
             headers: this.qd_headers,
             
         }
@@ -515,7 +522,7 @@ async qdfb2() {
         let options = {
             fn: 'hby',
             method: 'POST',
-            url: `${this.hostname}/api/v2/coin/rain`,
+            url: `${this.hostname}/api/v2/reward/rain`,
             headers: this.hby_headers,
         }
         // console.log(options)
@@ -640,13 +647,13 @@ async xfxh() {
 let i = ''
     if (i >= 0) {
         for (let i = 0; i < 4; i++) {
-            await run3()
+            await run()
             await this.xf1()
-            await run3()
+            await run()
             await this.xf2()
-            await run3()
+            await run()
             await this.xf3()
-            await run3()
+            await run()
             await this.xf4()
         }
         
@@ -728,7 +735,7 @@ async ksp() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -758,7 +765,7 @@ async zq() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}: 获得:${resp.result.coin}`)
+    $.log(`${this.idx}: 获得:${resp.result.reward}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -840,7 +847,7 @@ async zqmq() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}: 转一圈获得:${resp.result.coin}`)
+    $.log(`${this.idx}: 转一圈获得:${resp.result.reward}`)
 } else if (resp.code != 0) {
     //console.log(resp)
     this.ckFlog = false
@@ -950,7 +957,7 @@ async ssp() {
     // console.log(resp)
  if (resp.code == 0) {
    
-   console.log(`刷视频获得:${resp.result.coin}`)
+   console.log(`刷视频获得:${resp.result.reward}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -969,7 +976,7 @@ async sspmq() {
     // console.log(resp)
  if (resp.code == 0) {
    
-   console.log(`刷视频满圈获得:${resp.result.coin}`)
+   console.log(`刷视频满圈获得:${resp.result.reward}`)
 } else if (resp.code != 0) {
    //console.log(resp)
     this.ckFlog = false
@@ -1213,9 +1220,9 @@ async kzxqz1() {
         headers: this.ew_headers,
         body:'id=8'
     }
-     console.log(options)
+     //console.log(options)
     let resp = await $.request(options)
-     console.log(resp)
+    // console.log(resp)
  if (resp.code == 0) {
     this.zx1 = resp.result.ticket
     $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
@@ -1406,7 +1413,26 @@ async ydwzqz() {
 
 
 
+async info() {
+    let options = {
+        fn: 'info',
+        method: 'GET',
+        url: `${this.hostname}/api/v2/member/profile`,
+        headers: this.wu_headers,
+        
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx1 = resp.result.ticket
+    $.log(`${this.idx}:${resp.result.nickname} \n余额:${resp.result.balance} \n可换:${resp.result.has_wechat}元\n今日获得金币:${resp.result.today_point}\n`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
 
+}
 
 
 
