@@ -3,7 +3,10 @@
 cron 22 8,12 * * *  lkd.js
 抓包域名  lkd.yichengwangluo.net
 
+乐看点-看资讯赚零钱 https://lkd.yichengwangluo.net/landing_page/6931400
+
 export lkd="Authorization # device"  
+
 
 
 多账号用 换行 或 @ 分割  
