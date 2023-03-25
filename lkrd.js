@@ -2,6 +2,8 @@
 乐看热点            
 cron 22 8,12 * * *  lkrd.js
 
+抓包域名  apilkrd.cengaw.cn
+环境变量 lkrd
 export lkrd="device#Authorization"  
 
 
@@ -23,8 +25,20 @@ let DEFAULT_RETRY = 2           // 默认重试次数
 
 async function userTasks() {
 
- 
-    $.log('签到', { sp: true, console: false })  // 带分割的打印
+     $.log('用户信息', { sp: true, console: false })  // 带分割的打印
+    list = []
+    for (let user of $.userList) {
+        await wait(1)
+        list.push(user.info())
+    } await Promise.all(list)
+
+     $.log('提现', { sp: true, console: false })  // 带分割的打印
+    list = []
+    for (let user of $.userList) {
+        list.push(user.tx())
+    } await Promise.all(list)
+
+    $.log('开始任务', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
         list.push(user.list())
@@ -151,7 +165,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -165,7 +179,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -179,7 +193,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -192,7 +206,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -206,7 +220,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -220,7 +234,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -233,7 +247,7 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
@@ -247,13 +261,14 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
-            "Content-Length": "324"
+            'Content-Type':'application/x-www-form-urlencoded',
+            "Content-Length": "323"//324
         };
         this.kkz_headers = {
 			"Host": this.host,
@@ -261,14 +276,61 @@ class UserClass {
             "device": this.dh,
             "oaid": "",
             "store": "juliang",
-            "version": "101",
+            "version": "105",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
+            'Content-Type':'application/x-www-form-urlencoded',
             "Accept-Encoding": "gzip",
-            "Content-Length": "333"
+            "Content-Length": "333"// 335
         };
+        this.wz_headers = {
+			"Host": this.host,
+            "accept": "application/json",
+            "device": this.dh,
+            "oaid": "",
+            "store": "juliang",
+            "version": "105",
+            "platform": "1",
+            "Authorization": this.xs,
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            "Connection": "Keep-Alive",
+            'Content-Type':'application/x-www-form-urlencoded',
+            "Accept-Encoding": "gzip",
+            "Content-Length": "4"
+        };
+		this.wz1_headers = {
+			"Host": this.host,
+            "accept": "application/json",
+            "device": this.dh,
+            "oaid": "",
+            "store": "juliang",
+            "version": "105",
+            "platform": "1",
+            "Authorization": this.xs,
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            "Connection": "Keep-Alive",
+            'Content-Type':'application/x-www-form-urlencoded',
+            "Accept-Encoding": "gzip",
+            "Content-Length": "5"
+        };
+		this.tx_headers = {
+			"Host": this.host,
+            "accept": "application/json",
+            "device": this.dh,
+            "oaid": "",
+            "store": "juliang",
+            "version": "105",
+            "platform": "1",
+            "Authorization": this.xs,
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            "Connection": "Keep-Alive",
+            'Content-Type':'application/x-www-form-urlencoded',
+            "Accept-Encoding": "gzip",
+            "Content-Length": "78"
+        };
+
 
 function getRandom(min ,max){
         return Math.floor(Math.random()*(max -min) +min);
@@ -294,10 +356,10 @@ function getRandom(min ,max){
         $.log('签到', { sp: true, console: false })  
         if (resp.result.items[0].st = 1) {
             await this.qd()
-        } else if (resp.result.items[0].st = 0) {
+        } else if (resp.result.items[0].st == 0) {
             $.log(`${this.idx}: 状态:${resp.result.items[0].text}`)  
         }
-    await wait(3)
+    await wait(5)
     
         $.log('看视频', { sp: true, console: false })  
         if (resp.result.items[1].text == '看视频') {
@@ -314,12 +376,12 @@ function getRandom(min ,max){
             }
     
         } else if (resp.result.items[1].text == "点击领取") {
-            $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
-        } else if (resp.result.items[1].text = 2) {
-            $.log(`${this.idx}: 状态:${resp.result.items[1].text}`)  
+            //$.log(`${this.idx}: 状态1:${resp.result.items[1].text}`)  
+        } else if (resp.result.items[1].st == 2) {
+            $.log(`${this.idx}: 状态2:${resp.result.items[1].text}`)  
         }
     
-    await wait(3)
+    await wait(5)
     
         $.log('看资讯，赚金币', { sp: true, console: false })  
         if (resp.result.items[2].text == "去完成") {
@@ -334,15 +396,16 @@ function getRandom(min ,max){
             } 
     
         } else if (resp.result.items[2].text == "点击领取") {
-            $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
+           // $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
             await this.kzxqz1()
+            /*
             await wait(2)
             await this.kzxqz2()
             await this.kzxtj()
             await run1() 
             await this.kzx()
-                                   
-        } else if (resp.result.items[1].text = 0) {
+            */                       
+        } else if (resp.result.items[2].st == 2) {
             $.log(`${this.idx}: 状态:${resp.result.items[2].text}`)  
         }
     await wait(3)
@@ -359,75 +422,76 @@ function getRandom(min ,max){
                 await this.sspmq()                        
             } 
     
-        } else if (resp.result.items[3].text = "点击领取") {
+        } else if (resp.result.items[3].text == "点击领取") {
     
-            $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
+          //  $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
             await this.ssprw1()
+            /*
             await wait(2)
             await this.ssprw2()
             await this.ssprwtj()
             await run1() 
-            await this.ssprw()
-        } else if (resp.result.items[1].text = 2) {
+            await this.ssprw()*/
+        } else if (resp.result.items[3].st == 2) {
             $.log(`${this.idx}: 状态:${resp.result.items[3].text}`)  
         }
     await wait(3)
     
         $.log('当天阅读10篇文章', { sp: true, console: false })  
-        if (resp.result.items[5].text = "去完成") {
+        if (resp.result.items[4].text == "去完成") {
             for (let i = 0; i < 10; i++) {
                 
             await run1()
             await this.ydwz()
             } 
             
-        } else if (resp.result.items[5].text = "点击领取") {
-            $.log(`${this.idx}: 状态1:${resp.result.items[5].text}`)  
-        } else if (resp.result.items[1].text = 2) {
-            $.log(`${this.idx}: 状态2:${resp.result.items[5].text}`)  
+        } else if (resp.result.items[4].text == "点击领取") {
+            await this.ydwzlqd()
+  
+        } else if (resp.result.items[4].st == 2) {
+            $.log(`${this.idx}: 状态2:${resp.result.items[4].text}`)  
         }
     await wait(3)
-    /*
+    
         $.log('当天完成4个看看赚任务', { sp: true, console: false })  
-        if (resp.result.items[6].text = "去完成") {
-               /*
+        if (resp.result.items[5].text == "去完成") {
                 await this.kkzqz1()
-                await wait(63)
+                await run()
                 await this.kkz1()
                 await this.kkzqz2()
-                await wait(61)
+                await run()
                 await this.kkz2()
                 
                 await this.kkzqz3()
-                await wait(65)
+                await run()
                 await this.kkz3()
                 await this.kkzqz4()
-                await wait(67)
+                await run()
                 await this.kkz4()
     
-    
                 //await this.sspmq()                        
-        } else if (resp.result.items[6].text = "点击领取") {
-            $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
-        } else if (resp.result.items[1].text = 2) {
-            $.log(`${this.idx}: 状态:${resp.result.items[6].text}`)  
+        } else if (resp.result.items[5].text == "点击领取") {
+            await this.kkzlq()  
+        } else if (resp.result.items[5].st == 2) {
+            $.log(`${this.idx}: 状态:${resp.result.items[5].text}`)  
         }
     await wait(3)
     
         $.log('当天抽奖5次以上', { sp: true, console: false })  
-        if (resp.result.items[7].text = "看视频") {
+        if (resp.result.items[6].text == "去完成") {
             let i = ''
             for (let i = 0; i < 5; i++) {
-            await this.cj1()
-            await wait(16)
+                await this.cjqz()
+                await run1()
+                await this.cj1()
          }
         
-        } else if (resp.result.items[7].text = "点击领取") {
-            $.log(`${this.idx}: 状态:${resp.result.items[7].text}`)  
-        } else if (resp.result.items[7].text = 2) {
-            $.log(`${this.idx}: 状态1:${resp.result.items[7].text}`)  
+        } else if (resp.result.items[6].text == "点击领取") {
+            await this.cjlq() 
+        } else if (resp.result.items[6].st == 2) {
+            $.log(`${this.idx}: 状态1:${resp.result.items[6].text}`)  
         }
-    */
+    
     
     
     
@@ -521,7 +585,7 @@ async qdfb2() {
         let resp = await $.request(options)
         // console.log(resp)
      if (resp.code == 0) {
-         $.log(`${this.idx}:\n状态:${resp.result.reward}\n`)
+         $.log(`${this.idx}:\n状态:${resp.result.coin}\n`)
     } else if (resp.code != 0) {
         console.log(resp)
         this.ckFlog = false
@@ -562,9 +626,9 @@ async qdfb2() {
         let resp = await $.request(options)
         // console.log(resp)
      if (resp.code == 0) {
-        $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
-    await run()
-    await this.xffb()
+        $.log(`${this.idx}:点卷:${resp.result.coupon} 获得:${resp.result.coin}`)
+   // await run()
+   // await this.xffb()
     } else if (resp.code != 0) {
         $.log(`\n 状况:${resp.message}\n`)
         this.ckFlog = false
@@ -582,10 +646,10 @@ async xf2() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:点卷:${resp.result.coupon} 获得:${resp.result.coin}`)
     this.tk2 = resp.result.ticket
-    await run()
-    await this.xffb()
+   // await run()
+   // await this.xffb()
 } else if (resp.code == 40301) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -603,10 +667,10 @@ async xf3() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:点卷:${resp.result.coupon} 获得:${resp.result.coin}`)
     this.tk2 = resp.result.ticket
-    await run()
-    await this.xffb()
+   // await run()
+   // await this.xffb()
 } else if (resp.code == 40301) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -624,10 +688,10 @@ async xf4() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:状态:${resp.result.message} 获得:${resp.result.coin}`)
+        $.log(`${this.idx}:点卷:${resp.result.coupon} 获得:${resp.result.coin}`)
     this.tk2 = resp.result.ticket
-    await run()
-    await this.xffb()
+   // await run()
+   // await this.xffb()
 } else if (resp.code == 40301) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -659,13 +723,13 @@ async xfxh() {
 let i = ''
     if (i >= 0) {
         for (let i = 0; i < 4; i++) {
-            await run3()
+            await run()
             await this.xf1()
-            await run3()
+            await run()
             await this.xf2()
-            await run3()
+            await run()
             await this.xf3()
-            await run3()
+            await run()
             await this.xf4()
         }
         
@@ -781,7 +845,7 @@ async zq() {
             "device": this.dh,
             "oaid": '',
             "store": 'juliang',
-            "version": '101',
+            "version": '105',
             "platform": '1',
             "Authorization": this.xs,
             "User-Agent": 'Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)',
@@ -907,7 +971,7 @@ async cj1() {
         method: 'POST',
         url: `${this.hostname}/api/v2/reward/lottery/index`,
         headers: this.cj_headers,
-        body: `ticket=eyJ0eXAiOiJKV1MiLCJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2Nzc2NTE1MDcsImlhdCI6MTY3NzY0NzkwNywibmJmIjoxNjc3NjQ3OTA3LCJzdWIiOiJsb3R0ZXJ5IiwiYXVkIjo5OTg0Nn0.MTM2NTdmYTZiN2FiZGJhYmNmNDc1ZTQ1Yjk5NTU0NGYwNDNmNmVkM2I5OWUyOGFmZTkzNWE2N2Q1NjVhOWU0ZGQxODQ3ZWYzMjQzNzI2NmFjZmFjMWE3MDgwYWQyMjdmNWZhMTk1YTQzYWUyMzQ5Mjg0ZDlhZDQ0OGZkYzc2OGY`
+        body: `ticket=${this.tk5}`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1097,7 +1161,7 @@ async kkz1() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `tickit=${this.tkk1}`
+        body: `ticket=${this.tkk1}&id=1`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1117,7 +1181,7 @@ async kkz2() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `tickit=${this.tkk2}`
+        body: `ticket=${this.tkk2}&id=2`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1138,7 +1202,7 @@ async kkz3() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `tickit=${this.tkk3}`
+        body: `ticket=${this.tkk3}&id=3`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1159,7 +1223,7 @@ async kkz4() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `tickit=${this.tkk4}`
+        body: `ticket=${this.tkk4}&id=4`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1180,7 +1244,7 @@ async ydwz() {
         method: 'GET',
         url: `${this.hostname}/api/v2/news/sdk/zhuan/count?isfirstopen=0`,
         headers: this.wu_headers,
-        //body: `tickit=${this.tkk}`
+        //body: `ticket=${this.tkk}`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1200,7 +1264,7 @@ async ydwzlq1() {
         method: 'POST',
         url: `${this.hostname}/api/v2/zhuan/done`,
         headers: this.wu_headers,
-        //body: `tickit=${this.tkk}`
+        //body: `ticket=${this.tkk}`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1220,7 +1284,7 @@ async ydwzlq2() {
         method: 'GET',
         url: `${this.hostname}/api/v2/news/sdk/zhuan/count?isfirstopen=0`,
         headers: this.wu_headers,
-        //body: `tickit=${this.tkk}`
+        //body: `ticket=${this.tkk}`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1245,7 +1309,7 @@ async kzxqz1() {
         fn: 'kzxqz1',
         method: 'post',
         url: `${this.hostname}/api/v2/zhuan/done`,
-        headers: this.xf_headers,
+        headers: this.wz_headers,
         body:'id=8'
     }
     // console.log(options)
@@ -1253,7 +1317,7 @@ async kzxqz1() {
     // console.log(resp)
  if (resp.code == 0) {
     this.zx1 = resp.result.ticket
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -1321,7 +1385,7 @@ async kzx() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -1336,15 +1400,15 @@ async ssprw1() {
         fn: 'ssprw1',
         method: 'POST',
         url: `${this.hostname}/api/v2/zhuan/done`,
-        headers: this.xf_headers,
-        body:'id=7'
+        headers: this.wz_headers,
+        body: "id=7"
     }
     // console.log(options)
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
     this.sp = resp.result.ticket
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
@@ -1412,7 +1476,7 @@ async ssprw() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    $.log(`${this.idx}:金币:${resp.result.reward} 点卷:${resp.result.coupon}`)
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
 } else if (resp.code != 0) {
     console.log(resp)
     this.ckFlog = false
@@ -1422,7 +1486,111 @@ async ssprw() {
 
 
 
+async ydwzlqd() {
+    let options = {
+        fn: 'ydwzlqd',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.wz1_headers,
+        body:'id=24'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.sp = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
 
+}
+
+async tx() {
+    let options = {
+        fn: 'tx',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/cash/exchange`,
+        headers: this.tx_headers,
+        body:'gate=wechat&amount=5&lat=&lng=&root=0&sim=1&debug=0&model=HD1900&power=1&vpn=0'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.sp = resp.result.ticket
+    $.log(`${this.idx}:提现:${resp.resp.result.title}  ${resp.resp.result.message}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+async cjlq() {
+    let options = {
+        fn: 'cjlq',
+        method: 'post',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.wz_headers,
+        body:'id=4'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx1 = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+async kkzlq() {
+    let options = {
+        fn: 'kkzlq',
+        method: 'post',
+        url: `${this.hostname}/api/v2/zhuan/done`,
+        headers: this.wz1_headers,
+        body:'id=21'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx1 = resp.result.ticket
+    $.log(`${this.idx}:金币:${resp.result.coin} 点卷:${resp.result.coupon}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
+
+async info() {
+    let options = {
+        fn: 'info',
+        method: 'GET',
+        url: `${this.hostname}/api/v2/member/profile`,
+        headers: this.wu_headers,
+        
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+    this.zx1 = resp.result.ticket
+    $.log(`${this.idx}:${resp.result.nickname} \n余额:${resp.result.balance} \n可换:${resp.result.has_wechat}元\n今日获得金币:${resp.result.today_point}\n`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
 
 
 
