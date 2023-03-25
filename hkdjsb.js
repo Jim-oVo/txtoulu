@@ -2,6 +2,9 @@
 好看点极速版            
 cron 22 8,12 * * *  hkdjsb.js
 
+下载地址：
+https://hkd.yichengwangluo.net/landing_page/7688676
+
 抓包域名 hkd.yichengwangluo.net
 
 环境变量
