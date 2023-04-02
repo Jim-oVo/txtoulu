@@ -35,13 +35,13 @@ async function userTasks() {
         list.push(user.info())
     } await Promise.all(list)
 
-/*
+
     $.log('提现', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
-        list.push(user.tx())
+        list.push(user.TX())//TX 5元
     } await Promise.all(list)
-*/
+
     $.log('开始任务', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
@@ -156,6 +156,7 @@ class UserClass {
 		this.xr = ck.split('#')
 		this.xs = this.xr[0]
 		this.dh = this.xr[1]
+        this.xc = this.xr[2]
         this.ts = $.ts(13)
         this.reqNonc = $.randomInt(100000, 999999)
 		this.host = "yjb.yichengwangluo.net"
@@ -168,12 +169,13 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
+            'ssaid':this.xc,
             "Accept-Encoding": "gzip",
             "Content-Length": "0"
         };
@@ -182,13 +184,14 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
+            'ssaid':this.xc,
             "Content-Length": "0"
         };
 		this.wu_headers = {
@@ -196,12 +199,13 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
+            'ssaid':this.xc,
             "Accept-Encoding": "gzip",
         };
 		this.xf_headers = {
@@ -209,13 +213,14 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
+            'ssaid':this.xc,
             "Content-Length": "4"
         };
         this.zq_headers = {
@@ -223,13 +228,14 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
+            'ssaid':this.xc,
             "Content-Length": "331"
         };
         this.ksp_headers = {
@@ -237,12 +243,13 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
+            'ssaid':this.xc,
             "Accept-Encoding": "gzip"        
         };
         this.ksp1_headers = {
@@ -250,12 +257,13 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
+            'ssaid':this.xc,
             "Accept-Encoding": "gzip",
             "Content-Length": "3",        
         };
@@ -264,7 +272,7 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
@@ -272,6 +280,7 @@ class UserClass {
           'Content-Type':'application/x-www-form-urlencoded',
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
+            'ssaid':this.xc,
             "Content-Length": "326"
         };
         this.kkz_headers = {
@@ -279,22 +288,23 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             'Content-Type':'application/x-www-form-urlencoded',
+            'ssaid':this.xc,
             "Accept-Encoding": "gzip",
-            "Content-Length": "341"
+            "Content-Length": "336"
         };
         this.wz_headers = {
 			"Host": this.host,
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
@@ -302,6 +312,7 @@ class UserClass {
             "Connection": "Keep-Alive",
             'Content-Type':'application/x-www-form-urlencoded',
             "Accept-Encoding": "gzip",
+            'ssaid':this.xc,
             "Content-Length": "4"
         };
 		this.wz1_headers = {
@@ -309,7 +320,7 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
@@ -317,6 +328,7 @@ class UserClass {
             "Connection": "Keep-Alive",
             'Content-Type':'application/x-www-form-urlencoded',
             "Accept-Encoding": "gzip",
+            'ssaid':this.xc,
             "Content-Length": "3"
         };
 		this.tx_headers = {
@@ -324,17 +336,33 @@ class UserClass {
             "accept": "application/json",
             "device": this.dh,
             "oaid": "",
-            "store": "toutiao",
+            "store": "qiliang",
             "version": "3",
             "platform": "1",
             "Authorization": this.xs,
             "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
             "Connection": "Keep-Alive",
             'Content-Type':'application/x-www-form-urlencoded',
+            "ssaid":this.xc,
             "Accept-Encoding": "gzip",
             "Content-Length": "87"
         };
-
+		this.TX_headers = {
+			"Host": this.host,
+            "accept": "application/json",
+            "device": this.dh,
+            "oaid": "",
+            "store": "qiliang",
+            "version": "3",
+            "platform": "1",
+            "Authorization": this.xs,
+            "User-Agent": "Dalvik/2.1.0 (Linux; U; Android 9; HPB-AN00 Build/PQ3B.190801.002)",
+            "Connection": "Keep-Alive",
+            'Content-Type':'application/x-www-form-urlencoded',
+            "ssaid":this.xc,
+            "Accept-Encoding": "gzip",
+            "Content-Length": "78"
+        };
 function getRandom(min ,max){
         return Math.floor(Math.random()*(max -min) +min);
 }
@@ -388,7 +416,7 @@ function getRandom(min ,max){
     
         $.log('看资讯，赚金币', { sp: true, console: false })  
         if (resp.result.items[2].text == "去完成") {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 
                 await run3()
                 await this.zqqz()
@@ -415,7 +443,7 @@ function getRandom(min ,max){
     
         $.log('刷视频，赚金币', { sp: true, console: false })  
         if (resp.result.items[3].text == "去完成") {
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 50; i++) {
                 
                 await run3()
                 await this.sspqz()
@@ -1074,7 +1102,7 @@ async kkzqz1() {
     let options = {
         fn: 'kkzqz1',
         method: 'GET',
-        url: `${this.hostname}/api/v2/kan/click?id=329`,
+        url: `${this.hostname}/api/v2/kan/click?id=1`,
         headers: this.wu_headers
     }
     // console.log(options)
@@ -1093,7 +1121,7 @@ async kkzqz2() {
     let options = {
         fn: 'kkzqz2',
         method: 'GET',
-        url: `${this.hostname}/api/v2/kan/click?id=330`,
+        url: `${this.hostname}/api/v2/kan/click?id=2`,
         headers: this.wu_headers
     }
     // console.log(options)
@@ -1112,7 +1140,7 @@ async kkzqz3() {
     let options = {
         fn: 'kkzqz3',
         method: 'GET',
-        url: `${this.hostname}/api/v2/kan/click?id=331`,
+        url: `${this.hostname}/api/v2/kan/click?id=3`,
         headers: this.wu_headers
     }
     // console.log(options)
@@ -1131,7 +1159,7 @@ async kkzqz4() {
     let options = {
         fn: 'kkzqz4',
         method: 'GET',
-        url: `${this.hostname}/api/v2/kan/click?id=332`,
+        url: `${this.hostname}/api/v2/kan/click?id=4`,
         headers: this.wu_headers
     }
     // console.log(options)
@@ -1154,7 +1182,7 @@ async kkz1() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=329`
+        body: `ticket=${this.tkk1}&id=1`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1174,7 +1202,7 @@ async kkz2() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=330`
+        body: `ticket=${this.tkk2}&id=2`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1195,7 +1223,7 @@ async kkz3() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=331`
+        body: `ticket=${this.tkk3}&id=3`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1216,7 +1244,7 @@ async kkz4() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=332`
+        body: `ticket=${this.tkk4}&id=4`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1506,20 +1534,42 @@ async tx() {
         method: 'POST',
         url: `${this.hostname}/api/v2/cash/exchange`,
         headers: this.tx_headers,
-        body:'pos=99&gate=wechat&amount=3&lat=&lng=&root=0&sim=1&debug=0&model=HD1900&power=1&vpn=0'
+        body:'pos=99&gate=wechat&amount=0.3&lat=&lng=&root=1&sim=1&debug=0&model=HD1900&power=1&vpn=0'
     }
     // console.log(options)
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    this.sp = resp.result.ticket
-    $.log(`${this.idx}:提现:${resp.resp.result.title}  ${resp.resp.result.message}`)
+  
+    $.log(`${this.idx}:提现:${resp.result.title}  ${resp.result.message}`)
 } else if (resp.code != 0) {
     $.log(`\n 状况:${resp.message}\n`)
     this.ckFlog = false
 }  
 
 }
+
+async TX() {
+    let options = {
+        fn: 'TX',
+        method: 'POST',
+        url: `${this.hostname}/api/v2/cash/exchange`,
+        headers: this.TX_headers,
+        body:'gate=wechat&amount=5&lat=&lng=&root=1&sim=1&debug=0&model=HD1900&power=1&vpn=0'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+  
+    $.log(`${this.idx}:提现:${resp.result.title}  ${resp.result.message}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
+
+}
+
 
 async kkzlq() {
     let options = {
