@@ -5,11 +5,11 @@
 # 顺义创城有我
 export sycc=" token @ token "  
 
-抓 gsp.gacmotor.com 的 token
+
 
 多账号用 换行 或 @ 分割  
 */
-const $ = Env('顺义创城有我')
+const $ = new Env('顺义创城有我')
 const { MD5 } = require('crypto-js')
 const notify = require('./sendNotify')
 
@@ -132,7 +132,9 @@ class UserClass {
     constructor(ck) {
         this.idx = `账号[${++$.userIdx}]`
         this.ckFlog = true
-        this.token = ck
+		this.xr = ck.split('#')
+		this.xs = this.xr[0]
+		this.dh = this.xr[1]
         this.ts = $.ts(13)
         this.reqNonc = $.randomInt(100000, 999999)
 		this.host = "admin.shunyi.wenming.city",
@@ -143,7 +145,7 @@ class UserClass {
         this.sy_headers = {
             'Host': this.host,
 			"Connection": "keep-alive",
-			"x-applet-token": this.token,
+			"x-applet-token": this.xr,
 			"User-Agent": "Mozilla/5.0 (Linux; Android 7.1.2; Pixel XL Build/NZH54D; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4375 MMWEBSDK/20220903 Mobile Safari/537.36 MMWEBID/4304 MicroMessenger/8.0.28.2240(0x28001C35) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android",
 			"charset": "utf-8",
 			"Accept-Encoding": "gzip,compress,br,deflate",
@@ -157,7 +159,7 @@ class UserClass {
             'Host': this.host,
 			"Connection": "keep-alive",
 			"Content-Length": "0",
-			"x-applet-token": this.token,
+			"x-applet-token": this.xr,
 			"User-Agent": "Mozilla/5.0 (Linux; Android 7.1.2; Pixel XL Build/NZH54D; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4375 MMWEBSDK/20220903 Mobile Safari/537.36 MMWEBID/4304 MicroMessenger/8.0.28.2240(0x28001C35) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android",
 			"charset": "utf-8",
 			"Accept-Encoding": "gzip,compress,br,deflate",
@@ -171,7 +173,7 @@ class UserClass {
             'Host': this.host,
 			"Connection": "keep-alive",
 			"Content-Length": "181",
-			"x-applet-token": this.token,
+			"x-applet-token": this.xr,
 			"User-Agent": "Mozilla/5.0 (Linux; Android 7.1.2; Pixel XL Build/NZH54D; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4375 MMWEBSDK/20220903 Mobile Safari/537.36 MMWEBID/4304 MicroMessenger/8.0.28.2240(0x28001C35) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android",
 			"charset": "utf-8",
 			"Accept-Encoding": "gzip,compress,br,deflate",
@@ -184,7 +186,7 @@ class UserClass {
             'Host': this.host,
 			"Connection": "keep-alive",
 			"Content-Length": "58",
-			"x-applet-token": this.token,
+			"x-applet-token": this.xr,
 			"User-Agent": "Mozilla/5.0 (Linux; Android 7.1.2; Pixel XL Build/NZH54D; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.99 XWEB/4375 MMWEBSDK/20220903 Mobile Safari/537.36 MMWEBID/4304 MicroMessenger/8.0.28.2240(0x28001C35) WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64 MiniProgramEnv/android",
 			"charset": "utf-8",
 			"Accept-Encoding": "gzip,compress,br,deflate",
@@ -207,7 +209,7 @@ class UserClass {
             method: 'POST',
             url: `${this.hostname}/jeecg-boot/applet/award/exchangeAward`,
             headers: this.dh_headers,
-			body: '{"awardIds":["1562334019131645953"],"phone":"17843183850"}'
+			body: '{"awardIds":["1562334019131645953"],"phone":"${this.dh}"}'
         }
         // console.log(options)
         let resp = await $.request(options)
