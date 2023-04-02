@@ -31,16 +31,17 @@ async function userTasks() {
      $.log('用户信息', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
+        
         await wait(1)
         list.push(user.info())
     } await Promise.all(list)
-/*
+
      $.log('提现', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
         list.push(user.tx())
     } await Promise.all(list)
-*/
+
     $.log('开始任务', { sp: true, console: false })  // 带分割的打印
     list = []
     for (let user of $.userList) {
@@ -155,6 +156,8 @@ class UserClass {
 		this.xr = ck.split('#')
 		this.xs = this.xr[0]
 		this.dh = this.xr[1]
+      this.xc = this.xr[2]
+      this.xz = this.xr[3]
         this.ts = $.ts(13)
         this.reqNonc = $.randomInt(100000, 999999)
 		this.host = "apilkrd.cengaw.cn"
@@ -271,7 +274,7 @@ class UserClass {
             "Connection": "Keep-Alive",
             "Accept-Encoding": "gzip",
             'Content-Type':'application/x-www-form-urlencoded',
-            "Content-Length": "323"//324
+            "Content-Length": this.xc//323
         };
         this.kkz_headers = {
 			"Host": this.host,
@@ -286,7 +289,7 @@ class UserClass {
             "Connection": "Keep-Alive",
             'Content-Type':'application/x-www-form-urlencoded',
             "Accept-Encoding": "gzip",
-            "Content-Length": "333"// 335
+            "Content-Length": this.xz// 333
         };
         this.wz_headers = {
 			"Host": this.host,
@@ -1522,7 +1525,6 @@ async tx() {
     let resp = await $.request(options)
     // console.log(resp)
  if (resp.code == 0) {
-    this.sp = resp.result.ticket
     $.log(`${this.idx}:提现:${resp.resp.result.title}  ${resp.resp.result.message}`)
 } else if (resp.code != 0) {
     $.log(`\n 状况:${resp.message}\n`)
@@ -1595,9 +1597,32 @@ async info() {
 
 }
 
+async TX2() {
+    let options = {
+        fn: 'TX2',
+        method: 'GET',
+        url: `${this.hostname}/api/v2/cash/exchange`,
+        headers: this.wu_headers,
+        body: 'gate=wechat&amount=30&lat=&lng=&root=0&sim=1&debug=1&model=NX629J&power=1&vpn=0'
+    }
+    // console.log(options)
+    let resp = await $.request(options)
+    // console.log(resp)
+ if (resp.code == 0) {
+$.log(`${this.idx}:提现:${resp.resp.result.title}  ${resp.resp.result.message}`)
+} else if (resp.code != 0) {
+    $.log(`\n 状况:${resp.message}\n`)
+    this.ckFlog = false
+}  
 
+}
 
-
+async TX2xh() {
+    for (let i=1; i<=50; i++) {
+        await wait(1)
+        await this.TX2()
+    }
+}
 
 
 
