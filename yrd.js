@@ -374,6 +374,7 @@ function getRandom(min ,max){
                 await run()
                 await this.ksp()
                 await run()
+                await run()
                 await wait(30)
             }
     
@@ -1173,7 +1174,7 @@ async kkz2() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=530`
+        body: `ticket=${this.tkk2}&id=530`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1194,7 +1195,7 @@ async kkz3() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=531`
+        body: `ticket=${this.tkk3}&id=531`
     }
     // console.log(options)
     let resp = await $.request(options)
@@ -1215,7 +1216,7 @@ async kkz4() {
         method: 'POST',
         url: `${this.hostname}/api/v2/kan/index`,
         headers: this.kkz_headers,
-        body: `ticket=${this.tkk1}&id=532`
+        body: `ticket=${this.tkk4}&id=532`
     }
     // console.log(options)
     let resp = await $.request(options)
